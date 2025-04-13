@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  smartjobpreppapi:
+    image: ${DOCKER_REGISTRY-}smartjobpreppapi
+    build:
+      context: .
+      dockerfile: ./Dockerfile
