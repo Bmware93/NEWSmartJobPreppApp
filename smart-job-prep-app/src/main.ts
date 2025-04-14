@@ -1,6 +1,8 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { provideHttpClient } from '@angular/common/http';
+import { JobDescriptionFormComponent } from './app/components/job-description-form/job-description-form.component';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(JobDescriptionFormComponent, {
+  providers: [provideHttpClient()]
+}).catch(err => console.error(err));
+

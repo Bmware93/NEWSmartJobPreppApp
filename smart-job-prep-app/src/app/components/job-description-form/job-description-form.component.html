@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      Job Title:
+      <input formControlName="title" />
+    </label>
+    <br/>
+    <label>
+      Description:
+      <textarea formControlName="descriptionText"></textarea>
+    </label>
+    <br/>
+    <button type="submit">Submit</button>
+  </form>
+  
