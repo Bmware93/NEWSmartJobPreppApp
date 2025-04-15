@@ -1,14 +1,55 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
-    <label>
-      Job Title:
-      <input formControlName="title" />
-    </label>
-    <br/>
-    <label>
-      Description:
-      <textarea formControlName="descriptionText"></textarea>
-    </label>
-    <br/>
-    <button type="submit">Submit</button>
-  </form>
+
+<div class="smart-job-prep-container">
+  <div class="smart-job-prep-header">
+    <h1>Hello Interview</h1>
+    <p>Enter your job details below and get personalized technical inteview questions for the job you're applying for</p>
+  </div>
+  <div class="smart-job-prep-form">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label class="form-label" for="jobTitle">Job Title</label>
+        <input
+          id="jobTitle"
+          class="form-control"
+          formControlName="title"
+          placeholder="e.g. Senior Project Manager, UX Designer"
+        />
+        <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched" class="error-message">
+          Please enter a job title
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="jobDescription">Job Description</label>
+        <textarea
+          id="jobDescription"
+          class="form-control"
+          formControlName="descriptionText"
+          placeholder="Paste the full job description here..."
+        ></textarea>
+        <div *ngIf="form.get('descriptionText')?.invalid && form.get('descriptionText')?.touched" class="error-message">
+          Please enter the job description
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Prepare My Application</button>
+    </form>
+    <div class="feature-list">
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span>Keyword Analysis</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span>Resume Optimization</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span>Interview Questions</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span>Skill Gap Analysis</span>
+      </div>
+    </div>
+  </div>
+</div>
   
