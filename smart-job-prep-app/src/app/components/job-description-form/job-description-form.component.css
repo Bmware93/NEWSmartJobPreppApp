@@ -1,132 +1,80 @@
-:root {
-    --primary: #2563EB;
-    --primary-dark: #1D4ED8;
-    --secondary: #F0F9FF;
-    --text: #1E293B;
-    --light-text: #64748B;
-    --border: #CBD5E1;
-    --error: #EF4444;
-    --success: #10B981;
-    --shadow: rgba(0, 0, 0, 0.1);
-  }
-  /* Form Container */
-  .smart-job-prep-container {
-    max-width: 800px;
-    margin: 40px auto;
-    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-  }
-  .smart-job-prep-header {
-    margin-bottom: 30px;
+.form-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #fff;
     text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   }
-  .smart-job-prep-header h1 {
-    color: var(--primary);
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 10px;
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 0;
   }
-  .smart-job-prep-header p {
-    color: var(--light-text);
-    font-size: 16px;
-    line-height: 1.5;
+  
+  .light-text {
+    color: #555;
   }
-  .smart-job-prep-form {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px var(--shadow);
-    padding: 35px;
+  
+  .highlight {
+    color: #0000aa;
+    font-weight: bold;
   }
-  .form-group {
-    margin-bottom: 24px;
+  
+  h2 {
+    color: #9c8fd9;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 30px;
   }
-  .form-label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--text);
-    font-size: 15px;
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
   }
-  .form-control {
-    width: 100%;
-    padding: 14px 16px;
-    font-size: 15px;
-    border: 1px solid var(--border);
+  
+  label {
+    color: #777;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  
+  input,
+  textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    transition: all 0.2s ease;
-    color: var(--text);
-    background-color: #FCFCFC;
+    width: 100%;
+    font-size: 1rem;
   }
-  .form-control::placeholder {
-    color: #94A3B8;
+  
+  textarea {
+    min-height: 100px;
   }
-  .form-control:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-  }
-  textarea.form-control {
-    min-height: 180px;
-    resize: vertical;
-    line-height: 1.6;
-  }
-  .submit-btn {
-    background-color: var(--primary);
+  
+  button {
+    padding: 12px;
+    background-color: #7465d8;
     color: white;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 14px 28px;
     border: none;
     border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s;
-    width: 100%;
-    margin-top: 10px;
+    transition: background-color 0.3s;
   }
-  .submit-btn:hover {
-    background-color: var(--primary-dark);
+  
+  button:disabled {
+    background-color: #bdbdbd;
+    cursor: not-allowed;
   }
-  .submit-btn:active {
-    transform: translateY(1px);
+  
+  button:hover:not(:disabled) {
+    background-color: #5c51c7;
   }
-  /* Error state styling */
-  .form-control.ng-invalid.ng-touched {
-    border-color: var(--error);
-  }
-  .error-message {
-    color: var(--error);
-    font-size: 13px;
-    margin-top: 5px;
-  }
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .smart-job-prep-form {
-      padding: 25px;
-    }
-    .smart-job-prep-container {
-      margin: 20px auto;
-      padding: 0 15px;
-    }
-  }
-  /* Optional feature highlighting */
-  .feature-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 30px;
-  }
-  .feature-item {
-    flex: 1 0 50%;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-  }
-  .feature-icon {
-    width: 20px;
-    height: 20px;
-    background-color: rgba(37, 99, 235, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    color: var(--primary);
-  }
+  
+  

@@ -3,8 +3,6 @@ using SmartJobPreppAPI.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Add CORS
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
