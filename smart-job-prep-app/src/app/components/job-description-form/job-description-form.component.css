@@ -77,4 +77,32 @@
     background-color: #5c51c7;
   }
   
+  .questions-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .questions-card h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .questions-card ul {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  .questions-card li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: #444;
+  }
+  
   

@@ -13,6 +13,13 @@
     <textarea id="descriptionText" formControlName="descriptionText" placeholder="Paste Here..."></textarea>
 
     <button type="submit" [disabled]="form.invalid">ENTER</button>
+
+    <div *ngIf="generatedQuestions.length" class="questions-card">
+      <h3>Generated Interview Questions</h3>
+      <ul>
+        <li *ngFor="let question of generatedQuestions">{{ question }}</li>
+      </ul>
+    </div>
   </form>
 </div>
 
