@@ -161,7 +161,7 @@ namespace SmartJobPreppAPI.Controllers
                 messages = new[]
                 {
             new { role = "system", content = "You are a technical interviewer." },
-            new { role = "user", content = $"Generate 5 technical I might be asked interview questions for a {title} job. Here is the description: {description}" }
+            new { role = "user", content = $"Generate 5 technical interview questions for a {title} job. Here is the description: {description}" }
         }
             };
 

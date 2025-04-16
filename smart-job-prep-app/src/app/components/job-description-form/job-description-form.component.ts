@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JobService } from '../../services/job.service';
 import { JobDescriptionResponse } from '../../services/job.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-description-form',
@@ -17,7 +18,12 @@ export class JobDescriptionFormComponent {
   form: FormGroup;
   generatedQuestions: string[] = [];
 
-  constructor(private fb: FormBuilder, private jobService: JobService) {
+  constructor(
+    private fb: FormBuilder, 
+    private http: HttpClient, 
+    private router: Router,
+    private jobService: JobService
+  ) {
     this.form = this.fb.group({
       title: ['', Validators.required],
       company: ['', Validators.required],
@@ -32,6 +38,11 @@ export class JobDescriptionFormComponent {
         next: (response: JobDescriptionResponse) => {
           this.generatedQuestions = response.questions;
           alert('Job Submitted! Interview Questions have been Generated.');
+
+          this.router.navigate(['/questions'], {
+            state: { questions: response.questions }
+          });
+          
           this.form.reset();
         },
         error: (error) => {
