@@ -93,11 +93,18 @@ namespace SmartJobPreppAPI.Controllers
         [HttpPost("feedback")]
         public async Task<ActionResult<string>> GetAnswerFeedback([FromBody] InterviewAnswerRequestDTO dto)
         {
-            var feedback = await GenerateFeedbackFromOpenAI(dto.Question, dto.Answer);
+            var question = await _context.Questions.FindAsync(dto.QuestionId);
+
+            if(question == null)
+            {
+                return ("Question not found");
+            }
+
+            var feedback = await GenerateFeedbackFromOpenAI(question.QuestionText, dto.Answer);
 
             var record = new InterviewAnswer
-            {
-                Question = dto.Question,
+            {   
+                QuestionId = question.Id,
                 Answer = dto.Answer,
                 Feedback = feedback
             };
