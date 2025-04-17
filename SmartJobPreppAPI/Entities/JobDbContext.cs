@@ -50,10 +50,14 @@ public partial class JobDbContext : DbContext
         modelBuilder.Entity<InterviewAnswer>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.Question).IsRequired();
             entity.Property(e => e.Answer).IsRequired();
             entity.Property(e => e.Feedback).IsRequired();
             entity.Property(e => e.CreatedAt).HasColumnType("dateTime");
+
+            entity.HasOne(e => e.Question)
+            .WithMany()
+            .HasForeignKey(e => e.QuestionId)
+            .OnDelete(DeleteBehavior.Cascade);
         });
 
         OnModelCreatingPartial(modelBuilder);

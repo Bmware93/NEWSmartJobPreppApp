@@ -5,7 +5,9 @@ namespace SmartJobPreppAPI.Entities
 	{
 		public int Id { get; set; }
 
-		public string Question { get; set; }
+		public int QuestionId { get; set; }
+
+		public Question Question { get; set; }
 
 		public string Answer { get; set; }
 
