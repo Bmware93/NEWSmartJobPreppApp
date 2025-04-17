@@ -1,0 +1,30 @@
+.tabs {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+    background-color: #f5f7fb;
+    justify-content: flex-start;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+  }
+ .tabs a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    padding-bottom: 6px;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+  .tabs a.active {
+    color: #1d4ed8;
+    font-weight: 600;
+  }
+  .tabs a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 6px;
+    width: 100%;
+    background-color: #1d4ed8;
+    border-radius: 2px;
+  }
