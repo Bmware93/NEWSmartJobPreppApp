@@ -19,6 +19,8 @@ public partial class JobDbContext : DbContext
 
     public virtual DbSet<Question> Questions { get; set; }
 
+    public virtual DbSet<InterviewAnswer> InterviewAnswers { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -43,6 +45,15 @@ public partial class JobDbContext : DbContext
             entity.HasOne(d => d.JobDescription).WithMany(p => p.Questions)
                 .HasForeignKey(d => d.JobDescriptionId)
                 .HasConstraintName("FK__Questions__JobDe__4BAC3F29");
+        });
+
+        modelBuilder.Entity<InterviewAnswer>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Question).IsRequired();
+            entity.Property(e => e.Answer).IsRequired();
+            entity.Property(e => e.Feedback).IsRequired();
+            entity.Property(e => e.CreatedAt).HasColumnType("dateTime");
         });
 
         OnModelCreatingPartial(modelBuilder);
