@@ -3,7 +3,6 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { JobDescriptionFormComponent } from './app/components/job-description-form/job-description-form.component';
 import { routes } from './app/app.routes';
-import { RootComponent } from './app/components/root/root.component';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
