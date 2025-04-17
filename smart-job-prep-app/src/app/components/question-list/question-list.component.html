@@ -1,1 +1,7 @@
-<p>question-list works!</p>
+<div class="questions-card" *ngIf="questions.length">
+    <h3>Generated Interview Questions</h3>
+    <ul>
+      <li *ngFor="let question of questions">{{ question.questionText }}</li>
+    </ul>
+  </div>
+  

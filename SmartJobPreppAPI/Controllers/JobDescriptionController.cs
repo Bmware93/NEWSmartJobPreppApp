@@ -113,11 +113,22 @@ namespace SmartJobPreppAPI.Controllers
 
             await _context.SaveChangesAsync();
 
+            var savedQuestions = await _context.Questions
+                .Where(q => q.JobDescriptionId == jobDescription.Id)
+                .Select(q => new QuestionDTO
+                {
+                    Id = q.Id,
+                    QuestionText = q.QuestionText
+                })
+                .ToListAsync();
+
             
             var response = new JobDescriptionResponseDTO    
             {
-
-                Questions = questions
+                JobDescriptionId = jobDescription.Id,
+                Title = jobDescription.Title,
+                DescriptionText = jobDescription.DescriptionText,
+                Questions = savedQuestions
             };
 
             return Ok(response);

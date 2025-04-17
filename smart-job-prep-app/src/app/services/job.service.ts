@@ -13,6 +13,15 @@ export interface JobDescriptionResponse {
   questions: string[];
 }
 
+export interface InterviewAnswerRequest {
+  questionId: number;
+  answer: string;
+}
+
+export interface FeedbackResponse {
+  feedback: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,5 +32,8 @@ export class JobService {
 
   submitJobDescription(job: JobDescription): Observable<JobDescriptionResponse> {
     return this.http.post<JobDescriptionResponse>(this.apiUrl, job)
+  }
+  submitInterviewAnswer(data: InterviewAnswerRequest): Observable<FeedbackResponse> {
+    return this.http.post<FeedbackResponse>('https:/localhost:7082/api/interview/feedback', data)
   }
 }
