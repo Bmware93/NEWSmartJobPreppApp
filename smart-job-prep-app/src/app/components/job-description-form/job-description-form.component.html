@@ -12,7 +12,7 @@
     <label for="descriptionText">Job Description</label>
     <textarea id="descriptionText" formControlName="descriptionText" placeholder="Paste Here..."></textarea>
 
-    <button type="submit" [disabled]="form.invalid">ENTER</button>
+    <button type="submit" [disabled]="form.invalid">Generate Interview Questions</button>
 
     <div *ngIf="generatedQuestions.length" class="questions-card">
       <h3>Generated Interview Questions</h3>

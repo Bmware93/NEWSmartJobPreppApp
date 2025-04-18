@@ -127,6 +127,7 @@ namespace SmartJobPreppAPI.Controllers
             {
                 JobDescriptionId = jobDescription.Id,
                 Title = jobDescription.Title,
+                Company = jobDescription.Company,
                 DescriptionText = jobDescription.DescriptionText,
                 Questions = savedQuestions
             };

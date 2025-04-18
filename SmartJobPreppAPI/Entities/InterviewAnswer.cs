@@ -7,13 +7,13 @@ namespace SmartJobPreppAPI.Entities
 
 		public int QuestionId { get; set; }
 
-		public Question Question { get; set; }
-
 		public string Answer { get; set; }
 
 		public string Feedback { get; set; }
 
 		public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-	}
+
+        public virtual Question Question { get; set; }
+    }
 }
 

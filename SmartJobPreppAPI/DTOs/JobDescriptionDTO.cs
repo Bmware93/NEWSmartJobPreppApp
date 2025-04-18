@@ -7,6 +7,8 @@ namespace SmartJobPreppAPI.DTOs
 
         public string Title { get; set; }
 
+        public string Company { get; set; }
+
         public string DescriptionText { get; set; }
 
         public List<QuestionDTO> Questions { get; set; }
