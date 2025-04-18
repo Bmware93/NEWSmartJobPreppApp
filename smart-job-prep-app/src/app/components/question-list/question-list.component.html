@@ -1,7 +1,23 @@
 <div class="questions-card" *ngIf="questions.length">
     <h3>Generated Interview Questions</h3>
-    <ul>
-      <li *ngFor="let question of questions">{{ question.questionText }}</li>
-    </ul>
+  
+    <div *ngFor="let question of questions" class="question-block">
+      <p class="question-title" (click)="expanded[question.id] = !expanded[question.id]">
+        ▶ {{ question.questionText }}
+      </p>
+  
+      <div *ngIf="expanded[question.id]">
+        <textarea [(ngModel)]="answers[question.id]" placeholder="Type your answer here..."></textarea>
+  
+        <button (click)="submitAnswer(question.id)">Submit Answer</button>
+  
+        <div class="feedback" *ngIf="feedback[question.id]">
+          <strong>Feedback:</strong>
+          <p>{{ feedback[question.id] }}</p>
+        </div>
+      </div>
+  
+      <hr />
+    </div>
   </div>
   

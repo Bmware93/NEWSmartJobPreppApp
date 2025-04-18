@@ -9,6 +9,8 @@ public partial class JobDescription
 
     public string? Title { get; set; }
 
+    public string? Company { get; set; }
+
     public string? DescriptionText { get; set; }
 
     public DateTime? CreatedAt { get; set; }
