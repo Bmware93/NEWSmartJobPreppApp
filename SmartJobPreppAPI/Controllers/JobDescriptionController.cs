@@ -37,6 +37,20 @@ namespace SmartJobPreppAPI.Controllers
           }
             return await _context.JobDescriptions.ToListAsync();
         }
+        //GET: List all jobs
+        [HttpGet("all-summaries")]
+        public async Task<ActionResult<IEnumerable<JobSummaryDTO>>> GetAllJobs()
+        {
+            return await _context.JobDescriptions
+                .OrderByDescending(j => j.CreatedAt)
+                .Select(j => new JobSummaryDTO
+                {
+                    Id = j.Id,
+                    Title = j.Title,
+                    Company = j.Company,
+                    CreatedAt = j.CreatedAt
+                }).ToListAsync();
+        }
 
         // GET: api/JobDescription/5
         [HttpGet("{id}")]
@@ -54,6 +68,26 @@ namespace SmartJobPreppAPI.Controllers
             }
 
             return jobDescription;
+        }
+
+        [HttpGet("{id}/questions")]
+        public async Task<ActionResult<IEnumerable<QuestionDTO>>> GetQuestionForJob(int id)
+        {
+            var job = await _context.JobDescriptions
+                .Include(j => j.Questions)
+                .FirstOrDefaultAsync(j => j.Id == id);
+
+            if(job == null)
+            {
+                return NotFound();
+            }
+
+            return job.Questions
+                .Select(q => new QuestionDTO
+                {
+                    Id = q.Id,
+                    QuestionText = q.QuestionText
+                }).ToList();
         }
 
         // PUT: api/JobDescription/5

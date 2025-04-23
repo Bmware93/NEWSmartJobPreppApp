@@ -153,7 +153,7 @@ namespace SmartJobPreppAPI.Controllers
                 {
                     new { role = "system", content = "You are a technical interview coach. Provide kind but constructive feedback on coding interview answers." },
 
-                    new { role = "user", content = $"Question: {question}\nAnswer: {answer}\n\nHow did the user do?" }
+                    new { role = "user", content = $"Question: {question}\nAnswer: {answer}\n\nHow did I do?" }
                 }
             };
 

@@ -1,3 +1,20 @@
+.job-header {
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .job-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .company {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+
 .questions-card {
     padding: 20px;
     border: 1px solid #ddd;

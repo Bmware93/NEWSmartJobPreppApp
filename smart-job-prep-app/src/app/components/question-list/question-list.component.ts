@@ -12,13 +12,22 @@ import { JobService } from '../../services/job.service';
   styleUrls: ['./question-list.component.css']
 })
 export class QuestionListComponent {
+  jobTitle: string = '';
+  company: string = '';
   questions: { id: number, questionText: string }[] = [];
+
   answers: { [key: number]: string } = {};
   feedback: { [key: number]: string } = {};
   expanded: { [key: number]: boolean } = {};
 
   constructor(private route: ActivatedRoute, private jobService: JobService) {
-    const nav = history.state as { questions:  {id: number, questionText: string}[]};
+    const nav = history.state as { 
+      title?: string;
+      company?: string; 
+      questions:  {id: number, questionText: string}[]
+    };
+    this.jobTitle = nav.title ?? '';
+    this.company = nav.company ?? '';
     this.questions = nav.questions ?? [];
   }
 

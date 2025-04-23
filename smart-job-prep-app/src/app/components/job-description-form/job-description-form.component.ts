@@ -32,9 +32,9 @@ export class JobDescriptionFormComponent {
   }
   submit() {
     if (this.form.valid) {
-      const { title, descriptionText } = this.form.value;
+      const { title, descriptionText, company } = this.form.value;
 
-      this.jobService.submitJobDescription({ title, descriptionText }).subscribe({
+      this.jobService.submitJobDescription({ title, descriptionText, company }).subscribe({
         next: (response: JobDescriptionResponse) => {
           this.generatedQuestions = response.questions;
           alert('Job Submitted! Interview Questions have been Generated.');
@@ -42,7 +42,7 @@ export class JobDescriptionFormComponent {
           this.router.navigate(['/questions'], {
             state: { questions: response.questions }
           });
-          
+
           this.form.reset();
         },
         error: (error) => {

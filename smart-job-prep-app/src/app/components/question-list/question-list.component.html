@@ -1,4 +1,8 @@
 <div class="questions-card" *ngIf="questions.length">
+    <div class="job-header">
+        <h2>{{ jobTitle }}</h2>
+        <p class="company">{{company}}</p>
+    </div>
     <h3>Generated Interview Questions</h3>
   
     <div *ngFor="let question of questions" class="question-block">
