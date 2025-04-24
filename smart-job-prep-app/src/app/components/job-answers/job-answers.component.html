@@ -1,1 +1,7 @@
-<p>job-answers works!</p>
+<div class="answers-card" *ngFor="let a of answers">
+    <h4>{{ a.questionText }}</h4>
+    <p><strong>Your Answer:</strong> {{ a.answer }}</p>
+    <p><strong>Feedback:</strong> {{ a.feedback }}</p>
+    <p class="timestamp">Submitted: {{ a.submittedAt | date: 'short' }}</p>
+    <hr />
+  </div>

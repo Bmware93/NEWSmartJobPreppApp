@@ -15,7 +15,8 @@ export const routes: Routes = [
             { path:'form', component: JobDescriptionFormComponent },
             { path: 'questions', component: QuestionListComponent },
             { path: 'history', component: PreviousJobsComponent },
-            { path: 'job/:id/answers', component: JobAnswersComponent}
+            { path: 'job/:id/answers', component: JobAnswersComponent },
+            { path: 'job/:id/questions', component: QuestionListComponent }
         ]
     } 
 ];

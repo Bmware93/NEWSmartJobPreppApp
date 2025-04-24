@@ -31,6 +31,13 @@ export interface FeedbackResponse {
   feedback: string;
 }
 
+export interface AnswerFeedback {
+  questionText: string;
+  answer: string;
+  feedback: string;
+  submittedAt: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -50,5 +57,8 @@ export class JobService {
   }
   getQuestionsByJobId(jobId: number): Observable<{id: number, questionText: string}[]> {
     return this.http.get<{id: number, questionText: string}[]>(`${this.apiUrl}/${jobId}/questions`);
+  }
+  getInterviewAnswersByJobId(jobId: number): Observable<AnswerFeedback[]> {
+    return this.http.get<AnswerFeedback[]>(`https://localhost:7082/api/Interview/job/${jobId}/answers`);
   }
 }
