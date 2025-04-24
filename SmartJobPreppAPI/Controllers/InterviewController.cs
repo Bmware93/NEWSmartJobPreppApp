@@ -57,6 +57,25 @@ namespace SmartJobPreppAPI.Controllers
             return interviewAnswer;
         }
 
+        [HttpGet("job/{jobId}/answers")]
+        public async Task<ActionResult<IEnumerable<AnswerFeedbackDTO>>> GetAnswersForJob(int jobId)
+        {
+            var answers = await _context.InterviewAnswers
+                .Include(a => a.Question)
+                .Where(a => a.Question.JobDescriptionId == jobId)
+                .Select(a => new AnswerFeedbackDTO
+                {
+                    QuestionText = a.Question.QuestionText,
+                    Answer = a.Answer,
+                    Feedback = a.Feedback,
+                    SubmittedAt = a.CreatedAt
+
+                }).ToListAsync();
+
+            return Ok(answers);
+        }
+
+
         // PUT: api/Interview/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
