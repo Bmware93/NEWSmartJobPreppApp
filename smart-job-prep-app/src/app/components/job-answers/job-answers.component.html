@@ -1,7 +1,16 @@
-<div class="answers-card" *ngFor="let a of answers">
+<div *ngFor="let a of answers" class="feedback-card">
     <h4>{{ a.questionText }}</h4>
-    <p><strong>Your Answer:</strong> {{ a.answer }}</p>
-    <p><strong>Feedback:</strong> {{ a.feedback }}</p>
+  
+    <div class="user-answer">
+      <strong>Your Answer:</strong>
+      <p>{{ a.answer }}</p>
+    </div>
+  
+    <div class="ai-feedback">
+      <strong>Feedback:</strong>
+      <p>{{ a.feedback }}</p>
+    </div>
+  
     <p class="timestamp">Submitted: {{ a.submittedAt | date: 'short' }}</p>
-    <hr />
   </div>
+  
