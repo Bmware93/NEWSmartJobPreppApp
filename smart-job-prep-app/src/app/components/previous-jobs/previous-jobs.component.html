@@ -1,20 +1,26 @@
 <div class="history-container">
-    <h2>Past Job Descriptions</h2>
+    <h2>Interview History</h2>
   
     <div *ngIf="jobs.length === 0" class="empty-state">
       No jobs submitted yet.
     </div>
   
     <ul class="job-list" *ngIf="jobs.length > 0">
-      <li *ngFor="let job of jobs" (click)="viewJob(job.id, job.title, job.company)">
+      <li *ngFor="let job of jobs">
         <div class="job-info">
           <h3>{{ job.title }}</h3>
           <p class="company">{{ job.company }}</p>
           <p class="date">Submitted: {{ job.createdAt | date:'mediumDate' }}</p>
         </div>
-        <span class="view-link">View Questions →</span>
+        <div class="button-group">
+          <a class="btn-link" [routerLink]="['/job', job.id, 'questions']">View Questions</a>
+          <a class="btn-link" [routerLink]="['/job', job.id, 'answers']">View Feedback</a>
+        </div>
       </li>
     </ul>
   </div>
+  
+  
+  
   
   

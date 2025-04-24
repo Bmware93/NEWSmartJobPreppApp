@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ import { JobService } from '../../services/job.service';
   templateUrl:  './question-list.component.html',
   styleUrls: ['./question-list.component.css']
 })
-export class QuestionListComponent {
+export class QuestionListComponent implements OnInit {
   jobTitle: string = '';
   company: string = '';
   questions: { id: number, questionText: string }[] = [];
@@ -20,15 +20,30 @@ export class QuestionListComponent {
   feedback: { [key: number]: string } = {};
   expanded: { [key: number]: boolean } = {};
 
-  constructor(private route: ActivatedRoute, private jobService: JobService) {
-    const nav = history.state as { 
-      title?: string;
-      company?: string; 
-      questions:  {id: number, questionText: string}[]
-    };
-    this.jobTitle = nav.title ?? '';
-    this.company = nav.company ?? '';
-    this.questions = nav.questions ?? [];
+  constructor(private route: ActivatedRoute, private jobService: JobService) {}
+
+  ngOnInit(): void {
+      const jobId = Number(this.route.snapshot.paramMap.get('id'));
+
+      if(jobId) {
+        this.jobService.getJobById(jobId).subscribe({
+          next: (job) => {
+            this.jobTitle = job.title;
+            this.company = job.company;
+          },
+          error: (err) => {
+            console.error('Error fetching job', err);
+          }
+        });
+        this.jobService.getQuestionsByJobId(jobId).subscribe({
+          next: (questions) => {
+            this.questions = questions;
+          },
+          error: (err) => {
+            console.error('Error fetching questions', err);
+          }
+        });
+      }
   }
 
   submitAnswer(questionId: number) {
